@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Text with One Click</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        .copy-box { display: inline-block; background: #f4f4f4; padding: 10px; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Click to Copy</h2>
+    <div class="copy-box" onclick="copyText()">Click here to copy this text!</div>
+    <p id="message"></p>
+
+    <script>
+        function copyText() {
+            // Create a temporary textarea to store the text
+            var tempInput = document.createElement("textarea");
+            tempInput.value = "Click here to copy this text!";
+            document.body.appendChild(tempInput);
+            
+            // Select and copy the text
+            tempInput.select();
+            document.execCommand("copy");
+            
+            // Remove the temporary input
+            document.body.removeChild(tempInput);
+            
+            // Show confirmation message
+            document.getElementById("message").innerText = "Text copied!";
+        }
+    </script>
+</body>
+</html>
